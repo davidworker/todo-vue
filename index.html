@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TODO APP</title>
+        <meta name="description" content="TODO APP" />
+        <link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="./favicon/apple-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="./favicon/apple-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="./favicon/apple-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="./favicon/apple-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="./favicon/android-icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
+        <link rel="manifest" href="./favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="./favicon/ms-icon-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="stylesheet" href="css/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>TODO APP</h1>
+            </div>
+            <div class="user-info">
+                <div class="info-item user-info-row">
+                    <div class="user-details">
+                        <span class="info-label">目前使用者：</span>
+                        <span id="currentUser" class="info-value">未設定</span>
+                    </div>
+                    <button id="changeUid" class="change-uid-btn">更換使用者</button>
+                </div>
+                <div class="info-item api-info">
+                    <div class="api-details">
+                        <span class="info-label">API 位置：</span>
+                        <span id="apiUrl" class="info-value">未設定</span>
+                        <span class="info-label status-text">（狀態：</span>
+                        <span id="apiStatusText" class="status-value">未設定</span>
+                        <span>）</span>
+                    </div>
+                    <button id="configApi" class="config-api-btn">設定 API</button>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="text" id="todoInput" placeholder="新增待辦事項..." />
+                <button id="addTodo">新增</button>
+            </div>
+            <div class="todos-container">
+                <div class="todo-section">
+                    <h2>進行中</h2>
+                    <ul id="activeTodoList" class="todo-list"></ul>
+                </div>
+                <div class="todo-section">
+                    <h2>已完成</h2>
+                    <ul id="completedTodoList" class="todo-list"></ul>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>

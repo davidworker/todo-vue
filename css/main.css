@@ -1,0 +1,385 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.change-uid-btn,
+.config-api-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e67e22;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 15px;
+    white-space: nowrap;
+}
+
+.change-uid-btn:hover,
+.config-api-btn:hover {
+    background-color: #d35400;
+}
+
+.api-status {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-text {
+    font-weight: bold;
+    color: #666;
+}
+
+.status-value {
+    color: #e74c3c;
+}
+
+.status-value.connected {
+    color: #2ecc71;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #2c3e50 0%, #3498db 100%);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #ecf0f1;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(44, 62, 80, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(52, 73, 94, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(52, 152, 219, 0.2);
+}
+
+#todoInput {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #34495e;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: #34495e;
+    color: #ecf0f1;
+}
+
+#todoInput::placeholder {
+    color: #95a5a6;
+}
+
+#todoInput:focus {
+    outline: none;
+    border-color: #3498db;
+    background: #2c3e50;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+#addTodo {
+    padding: 15px 30px;
+    background: #3498db;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#addTodo:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.todos-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.todo-section {
+    background: rgba(52, 73, 94, 0.5);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.todo-list {
+    list-style: none;
+    min-height: 200px;
+}
+
+.todo-item {
+    background: #34495e;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #ecf0f1;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.todo-item:hover {
+    transform: translateY(-2px);
+}
+
+.todo-item.completed {
+    background: #2c3e50;
+    opacity: 0.8;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+.user-info {
+    margin: 10px 0 20px 0;
+    padding: 15px;
+    background-color: #2c3e50;
+    border-radius: 12px;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    color: #ecf0f1;
+}
+
+.user-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.api-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.api-details {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.info-label {
+    font-weight: bold;
+    margin-right: 5px;
+    color: #95a5a6;
+}
+
+.info-value {
+    color: #ecf0f1;
+    word-break: break-all;
+}
+
+.config-api-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 15px;
+    white-space: nowrap;
+}
+
+.config-api-btn:hover {
+    background-color: #2980b9;
+}
+
+/* RWD 調整 */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .user-info {
+        margin: 10px 0 15px 0;
+        padding: 12px;
+    }
+
+    .user-info-row,
+    .api-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .change-uid-btn,
+    .config-api-btn {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .api-details {
+        margin-bottom: 5px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    #todoInput {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #addTodo {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .todos-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .todo-item {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .delete-btn {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 更小的螢幕 */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .todo-section {
+        padding: 1rem;
+    }
+
+    .info-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* 確保在較大螢幕上有最大寬度限制 */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1100px;
+    }
+}
+
+/* 處理過長的 API URL */
+@media screen and (min-width: 769px) {
+    .api-details {
+        max-width: 70%;
+    }
+}
+
+/* 優化觸控裝置的互動 */
+@media (hover: none) {
+    .todo-item:hover {
+        transform: none;
+    }
+
+    .todo-item {
+        padding: 15px; /* 增加點擊區域 */
+    }
+
+    .delete-btn {
+        padding: 8px 16px; /* 增加點擊區域 */
+    }
+}
