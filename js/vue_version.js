@@ -1,3 +1,4 @@
+import { TodoApiRequest } from "./components/TodoApiRequest.js";
 import { TodoApiStorage } from "./components/TodoApiStorage.js";
 import { TodoItemStorage } from "./components/TodoItemStorage.js";
 import { TodoUserStorage } from "./components/TodoUserStorage.js";
@@ -38,6 +39,8 @@ const todoOptions = {
                 if (result.isConfirmed && result.value) {
                     this.user.name = result.value;
                     this.setUserToStorage(result.value);
+                    this.initTodos();
+                    TodoItemStorage.set(this.todos);
                 }
             } catch (error) {
                 console.error("輸入使用者 ID 時發生錯誤:", error);
@@ -66,12 +69,14 @@ const todoOptions = {
             });
             this.newTodo = "";
             TodoItemStorage.set(this.todos);
+            TodoApiRequest.set(this.user.name, this.todos);
         },
         deleteTodo(id) {
             this.todos = this.todos.filter((todo) => {
                 return todo.id != id;
             });
             TodoItemStorage.set(this.todos);
+            TodoApiRequest.set(this.user.name, this.todos);
         },
         toggleTodo(id) {
             this.todos = this.todos.map((todo) => {
@@ -81,6 +86,7 @@ const todoOptions = {
                 return todo;
             });
             TodoItemStorage.set(this.todos);
+            TodoApiRequest.set(this.user.name, this.todos);
         },
         async setApiUrl() {
             const result = await window.Swal.fire({
@@ -117,18 +123,27 @@ const todoOptions = {
             if (result.isConfirmed && result.value) {
                 this.apiUrl = TodoApiStorage.protectUrl(result.value);
                 TodoApiStorage.set(this.apiUrl);
+                this.initTodos();
                 return;
             }
         },
+        async initTodos() {
+            if (this.apiUrl) {
+                this.todos = await TodoApiRequest.get(this.user.name);
+                TodoItemStorage.set(this.todos);
+            } else {
+                this.todos = TodoItemStorage.get();
+            }
+        },
     },
-    mounted() {
+    async mounted() {
         console.log("Todo app mounted");
         this.user.name = this.getUserFromStorage();
         if (!this.user.name) {
             this.setUserName();
         }
-        this.todos = TodoItemStorage.get();
         this.apiUrl = TodoApiStorage.get();
+        this.initTodos();
     },
 };
 
