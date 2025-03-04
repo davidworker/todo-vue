@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TODO APP</title>
+        <meta name="description" content="TODO APP" />
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="stylesheet" href="css/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="app" v-cloak>
+                <div class="header">
+                    <h1>TODO APP</h1>
+                </div>
+                <div class="user-info">
+                    <div class="info-item user-info-row">
+                        <div class="user-details">
+                            <span class="info-label">目前使用者：</span>
+                            <span class="info-value" v-show="user.name"
+                                >{{ user.name }}</span
+                            >
+                            <span class="info-value" v-show="!user.name"
+                                >未設定</span
+                            >
+                        </div>
+                        <button class="change-uid-btn" @click="setUserName">
+                            更換使用者
+                        </button>
+                    </div>
+                    <div class="info-item api-info">
+                        <div class="api-details">
+                            <span class="info-label">API 位置：</span>
+                            <span class="info-value" v-show="apiUrl"
+                                >{{ apiUrl }}</span
+                            >
+                            <span class="info-value" v-show="!apiUrl"
+                                >未設定</span
+                            >
+                            <span class="info-label status-text">（狀態：</span>
+                            <span class="status-value" v-show="!apiUrl"
+                                >未設定</span
+                            >
+                            <span class="status-value connected" v-show="apiUrl"
+                                >已連接</span
+                            >
+                            <span>）</span>
+                        </div>
+                        <button class="config-api-btn" @click="setApiUrl">
+                            設定 API
+                        </button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="todoInput"
+                        placeholder="新增待辦事項..."
+                        v-model="newTodo"
+                    />
+                    <button id="addTodo" @click="addTodo">新增</button>
+                </div>
+                <div class="todos-container">
+                    <div class="todo-section">
+                        <h2>進行中</h2>
+                        <ul id="activeTodoList" class="todo-list">
+                            <li
+                                class="todo-item"
+                                v-for="todo in todos"
+                                :key="todo.id"
+                                @click="toggleTodo(todo.id)"
+                                v-show="!todo.completed"
+                            >
+                                <span>{{ todo.text }}</span>
+                                <button
+                                    class="delete-btn"
+                                    @click="deleteTodo(todo.id)"
+                                >
+                                    刪除
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="todo-section">
+                        <h2>已完成</h2>
+                        <ul id="completedTodoList" class="todo-list">
+                            <li
+                                class="todo-item completed"
+                                v-for="todo in todos"
+                                :key="todo.id"
+                                @click="toggleTodo(todo.id)"
+                                v-show="todo.completed"
+                            >
+                                <span>{{ todo.text }}</span>
+                                <button
+                                    class="delete-btn"
+                                    @click="deleteTodo(todo.id)"
+                                >
+                                    刪除
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="module" src="js/vue_version.js"></script>
+    </body>
+</html>
